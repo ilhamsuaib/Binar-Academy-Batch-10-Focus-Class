@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Binar App</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="belum_punya_akun_register_disini">Belum punya akun? register disini</string>
+</resources>
