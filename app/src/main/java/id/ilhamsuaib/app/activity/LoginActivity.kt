@@ -4,20 +4,27 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import id.ilhamsuaib.app.R
-import id.ilhamsuaib.app.extensions.toast
+import id.ilhamsuaib.app.data.PreferenceManager
+import id.ilhamsuaib.app.utils.extensions.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
-    companion object {
-        const val USERNAME: String = "username"
-    }
+    private lateinit var pref: PreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        pref = PreferenceManager(this)
         setupView()
+        checkLogin()
+    }
+
+    private fun checkLogin() {
+        if (pref.hasLogin) {
+            goToMain()
+        }
     }
 
     private fun setupView() {
@@ -35,16 +42,19 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        if (username == "ilham" && password == "1") {
-            toast("Login sukses")
+        toast("Login sukses")
 
-            //berpindah ke halaman main dan membawa data username
-            val gotoMain = Intent(this, MainActivity::class.java)
-            gotoMain.putExtra(USERNAME, username)
-            startActivity(gotoMain)
-            finish()
-        } else {
-            toast("Username atau password salah")
-        }
+        //menyimpan username ke shared pref
+        pref.username = username
+        pref.hasLogin = true
+
+        goToMain()
+    }
+
+    private fun goToMain() {
+        //berpindah ke halaman main dan membawa data username
+        val gotoMain = Intent(this, MainActivity::class.java)
+        startActivity(gotoMain)
+        finish()
     }
 }

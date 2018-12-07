@@ -1,9 +1,13 @@
 package id.ilhamsuaib.app.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import id.ilhamsuaib.app.R
+import id.ilhamsuaib.app.data.PreferenceManager
 import id.ilhamsuaib.app.fragment.MaterialFragment
 import id.ilhamsuaib.app.fragment.ProfileFragment
 import id.ilhamsuaib.app.fragment.StudentFragment
@@ -14,9 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //mengambil data dari intent
-        val username: String = intent.getStringExtra(LoginActivity.USERNAME)
 
         setupView()
     }
@@ -39,5 +40,21 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, frm)
         transaction.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_logout, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.menuLogout) {
+            val pref = PreferenceManager(this)
+            pref.logOut()
+            val goToLogin = Intent(this, LoginActivity::class.java)
+            startActivity(goToLogin)
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -1,4 +1,4 @@
-package id.ilhamsuaib.app.extensions
+package id.ilhamsuaib.app.utils.extensions
 
 import android.content.Context
 import android.widget.Toast
