@@ -2,6 +2,7 @@ package id.ilhamsuaib.app.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import id.ilhamsuaib.app.BinarApp
 import id.ilhamsuaib.app.utils.Constants
 
 /**

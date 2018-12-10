@@ -37,7 +37,7 @@ class StudentAdapter(private val studentList: List<Student>,
         fun bind(student: Student) = with(itemView) {
             tvStudentName.text = student.name
             tvStudentEmail.text = student.email
-            imgStudent.setImageResource(student.img)
+            imgStudent.setImageResource(R.mipmap.ic_launcher)
         }
     }
 }

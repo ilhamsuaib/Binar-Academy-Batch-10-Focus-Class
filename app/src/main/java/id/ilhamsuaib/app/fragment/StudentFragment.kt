@@ -11,6 +11,11 @@ import id.ilhamsuaib.app.adapter.StudentAdapter
 import id.ilhamsuaib.app.model.Student
 import id.ilhamsuaib.app.utils.extensions.toast
 import kotlinx.android.synthetic.main.fragment_student.view.*
+import id.ilhamsuaib.app.BinarApp
+import id.ilhamsuaib.app.model.GeneralResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class StudentFragment : Fragment() {
 
@@ -39,18 +44,22 @@ class StudentFragment : Fragment() {
     }
 
     private fun getStudents() {
-        studentList.add(Student(R.mipmap.ic_launcher, "Ilham Suaib", "ilhamsuaib10@gmail.com"))
-        studentList.add(Student(R.mipmap.ic_launcher, "Rega", "ilhamsuaib10@gmail.com"))
-        studentList.add(Student(R.mipmap.ic_launcher, "Bagus", "ilhamsuaib10@gmail.com"))
-        studentList.add(Student(R.mipmap.ic_launcher, "Sandy", "ilhamsuaib10@gmail.com"))
-        studentList.add(Student(R.mipmap.ic_launcher, "Ahmad", "ilhamsuaib10@gmail.com"))
-        studentList.add(Student(R.mipmap.ic_launcher, "Putra", "ilhamsuaib10@gmail.com"))
-        studentList.add(Student(R.mipmap.ic_launcher, "Putri", "putri@gmail.com"))
+        BinarApp.apiService.getAllStudents()
+                .enqueue(object : Callback<GeneralResponse<List<Student>>> {
 
-        (1..10).forEach {
-            studentList.add(Student(R.mipmap.ic_launcher, "Student $it", "email$it@gmail.com"))
-        }
+                    override fun onFailure(call: Call<GeneralResponse<List<Student>>>, t: Throwable) {
+                        toast("No internet connection")
+                    }
 
-        studentAdapter.notifyDataSetChanged()
+                    override fun onResponse(call: Call<GeneralResponse<List<Student>>>, response: Response<GeneralResponse<List<Student>>>) {
+                        val students: List<Student>? = response.body()?.data
+
+                        onResponseSuccess(students ?: emptyList())
+                    }
+                })
+    }
+
+    private fun onResponseSuccess(students: List<Student>) {
+        //todo : menampilkan data ke recycler view
     }
 }
