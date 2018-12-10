@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.ilhamsuaib.app.R
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import id.ilhamsuaib.app.data.PreferenceManager
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 /**
  * Created by @ilhamsuaib on 05/12/18.

@@ -43,7 +43,7 @@
         android:background="@color/colorPrimary"
         android:fontFamily="@font/anaheim"
         android:text="@string/login"
-        android:textColor="@color/putih"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
@@ -57,7 +57,7 @@
         android:background="@color/colorPrimary"
         android:text="@string/belum_punya_akun_register_disini"
         android:textAllCaps="false"
-        android:textColor="@color/putih"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
