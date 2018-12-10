@@ -17,7 +17,7 @@ class StudentFragment : Fragment() {
     private val studentList = mutableListOf<Student>()
     private val studentAdapter = StudentAdapter(studentList) {
         //pindah ke halaman detail, sambil ngirim data
-        requireContext().toast("View student : ${it.name}")
+        toast("View student : ${it.name}")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
