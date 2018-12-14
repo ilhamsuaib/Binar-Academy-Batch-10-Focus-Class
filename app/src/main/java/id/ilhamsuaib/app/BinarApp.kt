@@ -28,7 +28,7 @@ class BinarApp : Application() {
 
     private fun setupRetrofit() {
         val studentRetrofit = Retrofit.Builder()
-                .baseUrl("kotlinspringcrud.herokuapp.com/")
+                .baseUrl("https://kotlinspringcrud.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(getOkHttpClient())
                 .build()

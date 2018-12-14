@@ -8,4 +8,8 @@
     <string name="student">Student</string>
     <string name="material">Material</string>
     <string name="profile">Profile</string>
+    <string name="simpan">Simpan</string>
+    <string name="email">Email</string>
+    <string name="nama">Nama</string>
+    <string name="nama_dan_email_harus_diisi">Nama dan email harus diisi</string>
 </resources>
